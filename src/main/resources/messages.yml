@@ -1,0 +1,52 @@
+# All player/admin-facing text belongs here. Use & color codes.
+settings:
+  prefix-enabled: true
+prefix: '&8[&bMRX-LOGIN&8] &r'
+messages:
+  players-only: '&cThis command can only be used in-game.'
+  no-permission: '&cYou do not have permission.'
+  internal-error: '&cAn internal error occurred. Contact an administrator.'
+  login-required: '&ePlease log in using &b/login <password>&e.'
+  register-required: '&ePlease register using &b/register <password> <confirm>&e.'
+  login-success: '&aYou are now authenticated.'
+  register-success: '&aYour account has been created successfully.'
+  logout-success: '&eYou have been logged out.'
+  already-authenticated: '&eYou are already logged in.'
+  not-authenticated: '&cYou are not logged in.'
+  already-registered: '&cYou already have an account.'
+  not-registered: '&cYou do not have an account. Use /register.'
+  incorrect-password: '&cIncorrect password.'
+  password-mismatch: '&cThe passwords do not match.'
+  password-too-short: '&cPassword must contain at least {min} characters.'
+  password-too-long: '&cPassword cannot exceed {max} characters.'
+  password-changed: '&aYour password has been changed.'
+  usage-login: '&eUsage: /login <password>'
+  usage-register: '&eUsage: /register <password> <confirmPassword>'
+  usage-register-no-confirmation: '&eUsage: /register <password>'
+  usage-changepassword: '&eUsage: /changepassword <oldPassword> <newPassword>'
+  login-timeout: '&cLogin time expired.'
+  login-timeout-kick: '&cYou took too long to authenticate.'
+  bypass-authenticated: '&aAuthentication bypass permission detected.'
+  admin-help: |
+    &bMRX-LOGIN Admin Commands
+    &e/ml reload &7- Reload config.yml and messages.yml
+    &e/ml info &7- Show plugin information
+    &e/ml status &7- Show current module status
+    &e/ml debug &7- Show debug setting
+    &e/ml admin unregister <player> &7- Remove an account
+  reload-success: '&aConfiguration and messages reloaded.'
+  reload-failed: '&cReload failed. Check console; previous settings may still be active.'
+  admin-version: '&bMRX-LOGIN &7Version: &f{version} &7| Author: &fMRX DEVELOPMENT'
+  admin-status: '&eStorage: {storage} &7| Mode: {mode} &7| Online: {online} &7| GUI/Proxy/Folia modules are separate/not included.'
+  debug-enabled: '&aDebug mode is enabled in config.yml.'
+  debug-disabled: '&eDebug mode is disabled in config.yml.'
+  admin-unknown-subcommand: '&cUnknown subcommand. Use /ml help.'
+
+  registration-disabled: '&cRegistration is currently disabled.'
+  weak-password: '&cThat password is too common or weak. Choose a stronger password.'
+  account-ip-limit: '&cThe maximum number of accounts for your IP has been reached.'
+  temporarily-blocked: '&cToo many failed login attempts. Try again later.'
+  temporarily-blocked-kick: '&cToo many failed login attempts. Please try again later.'
+  admin-account-usage: '&eUsage: /ml admin unregister <player>'
+  admin-account-removed: '&aAccount for {player} was removed.'
+  admin-account-not-found: '&cNo account was found for {player}.'

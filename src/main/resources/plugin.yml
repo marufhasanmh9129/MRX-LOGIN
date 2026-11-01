@@ -1,0 +1,39 @@
+name: MRX-LOGIN
+version: '1.0.0'
+main: com.mrxlogin.MRXLoginPlugin
+api-version: '1.21'
+authors: [MRX DEVELOPMENT]
+description: Configurable authentication plugin foundation for Paper.
+commands:
+  login:
+    description: Authenticate with your password
+    usage: /login <password>
+    aliases: [l]
+  register:
+    description: Create an account
+    usage: /register <password> <confirmPassword>
+    aliases: [reg]
+  logout:
+    description: End your authenticated session
+    usage: /logout
+  changepassword:
+    description: Change your password
+    usage: /changepassword <oldPassword> <newPassword>
+    aliases: [changepass, cp]
+  ml:
+    description: MRX-LOGIN administration
+    usage: /ml <help|reload|info|status|debug>
+    aliases: [mrxlogin, mlogin]
+permissions:
+  mrxlogin.admin:
+    description: Allows administration of MRX-LOGIN
+    default: op
+  mrxlogin.admin.reload:
+    description: Allows reloading MRX-LOGIN configuration
+    default: op
+  mrxlogin.admin.accounts:
+    description: Allows managing player accounts
+    default: op
+  mrxlogin.bypass:
+    description: Bypasses authentication restrictions
+    default: false

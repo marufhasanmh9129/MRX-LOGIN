@@ -1,0 +1,177 @@
+# MRX-LOGIN configuration
+# Only settings marked IMPLEMENTED are active in this source build.
+# Reserved sections document planned modules; they do not activate missing code.
+
+settings:
+  language: en_US
+  update-checker: false # Reserved; no update-checker module in 1.0.0.
+  metrics: false # Reserved; metrics module not included.
+
+authentication:
+  mode: AUTHME # AUTHME is the only functional mode in this build. GUI requires a proxy/limbo module.
+  premium:
+    enabled: false
+    auto-login: false # Do not trust usernames; trusted online-mode/proxy identity module is not implemented.
+    require-secure-profile: true # Reserved; premium identity module not included.
+  session:
+    enabled: false # Not implemented yet.
+    duration-minutes: 30 # Reserved; session module not included.
+    ip-lock: true # Reserved; session module not included.
+  bedrock:
+    enabled: false # Requires Floodgate integration; not implemented.
+    provider: FLOODGATE # Reserved; Floodgate module not included.
+  two-factor:
+    enabled: false # TOTP workflow not implemented.
+    issuer: MRX-LOGIN # Reserved; TOTP module not included.
+    code-length: 6 # Reserved; TOTP module not included.
+    window: 1 # Reserved; TOTP module not included.
+
+registration:
+  enabled: true
+  require-confirmation: true
+  max-accounts-per-ip: 3
+  limit-per-ip: true
+
+password:
+  minimum-length: 8
+  maximum-length: 64
+  iterations: 210000
+  block-weak-passwords: true
+  algorithm: PBKDF2-HMAC-SHA256
+
+protection:
+  movement: true
+  block-break: true
+  block-place: true
+  chat: true
+  inventory: true
+  interact: true
+  damage: true
+  commands-allowlist: [login, register, ml, l, reg, mrxlogin, mlogin]
+  login-timeout-seconds: 60
+  max-login-attempts: 5
+  temporary-ban-seconds: 300
+  captcha:
+    enabled: false # Not implemented.
+    length: 5
+
+antibot:
+  enabled: false # Not implemented.
+  join-rate-limit: 5
+  window-seconds: 10
+  temporary-block-seconds: 60
+
+spawn:
+  first-join:
+    enabled: false
+    world: world
+    x: 0.5
+    y: 64.0
+    z: 0.5
+  last-location:
+    restore: false # Saving coordinates is implemented; automatic restore is not yet implemented.
+    save-on-quit: true
+  fixes:
+    prevent-void-spawn: false # Reserved; enabling is rejected until the fix module exists.
+    prevent-portal-loop: false # Reserved; enabling is rejected until the fix module exists.
+
+email:
+  enabled: false # Provider helpers exist; verification/recovery commands are not implemented.
+  provider:
+    mode: BOTH # Reserved; email workflow is not included in 1.0.0.
+    primary: RESEND
+    fallback: BREVO
+    timeout-seconds: 20
+    retries: 2
+  credentials:
+    resend:
+      api-key-env: MRX_RESEND_API_KEY
+    brevo:
+      api-key-env: MRX_BREVO_API_KEY
+  sender:
+    name: MRX Network
+    email: no-reply@example.com
+    reply-to: support@example.com
+  branding:
+    logo-url: https://example.com/logo.png
+    header: MRX NETWORK
+    primary-color: '#2563EB'
+    background-color: '#F4F6FA'
+    footer: Powered by MRX-LOGIN
+  verification:
+    code-length: 6
+    expiration-seconds: 300
+    resend-cooldown-seconds: 60
+    maximum-attempts: 5
+  recovery:
+    enabled: false
+    code-expiration-seconds: 600
+
+discord:
+  enabled: false # Discord verification not implemented.
+  bot-token-env: MRX_DISCORD_BOT_TOKEN
+  guild-id: ''
+
+database:
+  type: SQLITE # SQLITE is the only implemented backend in this build.
+  sqlite:
+    file: accounts.db
+    busy-timeout-ms: 5000
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    database: mrxlogin
+    username: mrxlogin
+    password-env: MRX_MYSQL_PASSWORD
+    ssl: true
+    pool-size: 10
+  mariadb:
+    host: 127.0.0.1
+    port: 3306
+    database: mrxlogin
+    username: mrxlogin
+    password-env: MRX_MARIADB_PASSWORD
+  postgresql:
+    host: 127.0.0.1
+    port: 5432
+    database: mrxlogin
+    username: mrxlogin
+    password-env: MRX_POSTGRES_PASSWORD
+  h2:
+    file: mrxlogin
+
+proxy:
+  enabled: false # Velocity/BungeeCord modules not implemented.
+  type: NONE # NONE, VELOCITY, BUNGEECORD
+  forwarding-secret-env: MRX_FORWARDING_SECRET
+  trust-proxy-identity: false
+
+folia:
+  enabled: false # Folia scheduler adapter is not implemented.
+
+commands:
+  admin-root: ml # Command labels are fixed by plugin.yml in 1.0.0.
+  aliases: [mrxlogin, mlogin] # Aliases are fixed by plugin.yml in 1.0.0.
+  register: register
+  login: login
+  logout: logout
+  change-password: changepassword
+
+permissions:
+  admin: mrxlogin.admin # Permission nodes are fixed by plugin.yml in 1.0.0.
+  bypass: mrxlogin.bypass
+
+debug:
+  enabled: false
+  log-authentication-events: false # Reserved; detailed audit logging not included.
+  log-database-errors: true # Reserved; database error logging is always minimal.
+
+backup:
+  enabled: false # Backup/restore commands not implemented.
+  interval-minutes: 60
+  keep-files: 24
+
+migration:
+  enabled: false # Migration/converter not implemented.
+  source: AUTHME
+
